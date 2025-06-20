@@ -1,0 +1,94 @@
+:root {
+  /* primary colors*/ 
+  --primaryClr: #2E7D32;
+  --primaryClr_500: #0A1B0B;
+  --primaryClr_400: #1D5020;
+  --primaryClr_300: #318535;
+  --primaryClr_200: #45BA4B;
+  --primaryClr_100: #7ACE7E;
+  --primaryClr_50: #AFE2B2;
+  --primaryClr_25: #E4F5E5;
+  /* --------- */
+  --limeGreenClr: #32CD32;
+  --lightMintClr: #E7F6E7;
+  --borderClr: #E0E0E0;
+  --DiscountClr:#FF3B30;
+  /*Shadows*/
+  --CTA_shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+  --Normal_shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  --Windows_shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  color:#222;
+  font-family: var(--font-poppins), Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+*:active, *:focus {
+  border:none;
+  outline:none
+}
+
+body {
+  position: relative;
+}
+
+.frame {
+  position: relative;
+  background: var(--lightMintClr) url("/backIllusts.svg") no-repeat center top/160% fixed;
+  width:100%;
+  min-height:100vh;
+  padding:78px 16px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+h2, h3 {
+  font-weight: 600;
+  color:var(--primaryClr)
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+}
+
+.greenButton {
+  background-color: var(--primaryClr_200);
+  color:white;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 12px;
+  padding:6px 24px;
+  transition: 0.3s;
+}
+
+.outLinedButton {
+  background: none;
+  color:var(--primaryClr_200);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 12px;
+  border: 1px solid var(--primaryClr_200);
+  padding:6px 24px;
+  transition: 0.3s;
+}
+
+.CTAButton {
+  background: linear-gradient( 120deg, var(--limeGreenClr) 40%, var(--primaryClr_300) 100%);
+  color:white;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  padding:10px 24px;
+  box-shadow: var(--CTA_shadow);
+  transition: 0.3s;
+}

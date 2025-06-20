@@ -1,0 +1,36 @@
+.navigationBar {
+    position: fixed;
+    bottom: 0;
+    display:flex;
+    align-items: center;
+    width:100%;
+    padding:0 16px;
+    background-color: white;
+    border-top: 1px solid var(--borderClr)
+  }
+  
+  .links {
+    flex: 1;
+    text-decoration:none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    height:64px;
+  }
+
+  .navigationBar .links img{
+    width:24px; height:24px
+  }
+
+  .navigationBar .links p{
+    color: #888;
+    font-size:12px;
+    font-weight: 500;
+  }
+
+  .navSelected {
+    color:var(--primaryClr_300) !important;
+    font-weight: bold !important;
+  }

@@ -1,0 +1,15 @@
+.productCount {
+    display:flex;
+    gap:12px;
+    align-items: center;
+  }
+  
+  .productCount p{
+    font-size: 20px;
+  }
+  
+  .productCount .counter{
+    font-size: 18px;
+    padding: 2px 16px;
+    border-bottom: 1px solid var(--primaryClr_100)
+  }

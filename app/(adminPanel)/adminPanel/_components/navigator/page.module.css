@@ -1,0 +1,20 @@
+.titleCont {
+    display: flex;
+    gap:16px;
+    align-items: center;
+}
+
+.titleCont h3 {
+    display: flex;
+    gap:16px;
+    align-items: center;
+}
+
+.lastRoutes {
+    color:#222c;
+    transition: 0.3s;
+}
+
+.lastRoutes:hover {
+    color:#222
+}

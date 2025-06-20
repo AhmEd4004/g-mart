@@ -1,0 +1,106 @@
+.headerCont {
+  width:100%;
+  position: fixed;
+  top:0;
+  z-index: 2;
+  padding:16px;
+  transition: 0.5s;
+  border-radius: 0 0 8px 8px;
+  gap: 16px;
+}
+
+.scrollingEffect {
+  background-color: #0002;
+  backdrop-filter: blur(4px);
+}
+
+.searchCont {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap:16px;
+  align-items: center;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.searchCont input{
+  width:100%;
+  font-size: 14px;
+  color:#AEAEAE;
+  border: none;
+  border-radius: 12px;
+  padding:12px 12px 12px 32px;
+  box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.1);;
+}
+
+.inputCont {
+  position: relative;
+  flex:1;
+}
+
+.primaryIcon {
+  position: absolute;
+  top:0; left:8px;
+  height: 100%;
+  width: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchButton {
+  position: absolute;
+  top:4px; right:4px;
+  height: calc(100% - 8px);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+/*-----------------------------------------------*/
+
+.filtersForm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding:24px 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap:24px;
+  z-index: -1;
+  background: white;
+  box-shadow: var(--Normal_shadow);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.buttonsCont {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  color: #222;
+  direction: rtl;
+}
+
+.filtersForm .bodyCont {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap:16px;
+}
+
+.filtersForm .flexCont {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filtersForm .priceInput input {
+  border: 1px solid var(--borderClr);
+  padding: 8px;
+  width:120px;
+  border-radius: 8px;
+  text-align: center;
+}

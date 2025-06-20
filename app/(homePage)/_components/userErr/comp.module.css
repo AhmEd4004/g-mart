@@ -1,0 +1,19 @@
+.container {
+    position: fixed;
+    bottom:73px;
+    width: calc(100% - 32px);
+    display: flex;
+    align-items: center;
+    gap:16px;
+    padding:16px;
+    border-radius: 12px;
+    border: 1px solid var(--borderClr);
+    background:white;
+    box-shadow: var(--Normal_shadow);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.container p{
+    font-size: 14px;
+}

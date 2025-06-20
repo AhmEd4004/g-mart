@@ -1,0 +1,27 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    color:#222;
+    font-family: var(--font-poppins), Arial, sans-serif;
+}
+  
+body {
+    background-color: #F5F5F5;
+}
+  
+.mainFrame {
+    position: relative;
+    width:80dvw;
+    margin: 0 auto;
+}
+ 
+a {
+    text-decoration: none;
+}
+
+.hasIconCont {
+    display:flex;
+    align-items: center;
+    gap:8px;
+}

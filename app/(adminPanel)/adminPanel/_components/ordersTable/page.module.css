@@ -1,0 +1,63 @@
+.frame {
+    position: relative;
+    width:80%;
+    height:100dvh;
+    margin: 0 auto;
+    padding:24px 0;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+.tableCont {
+    flex:1;
+    overflow-y: auto;
+}
+
+.actionsCont {
+    display: flex;
+    gap:16px;
+    width:100%;
+    padding: 0 8px;
+}
+
+.twoLineCont {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    gap:2px;
+}
+
+.twoLineCont *{
+    line-height: normal !important;
+}
+
+.twoLineCont p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.twoLineCont .productsCont{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:16px;
+}
+
+.twoLineCont .productsCont span{
+    background-color: lightcoral;
+    font-size: 12px;
+    padding: 0px 4px;
+    border-radius: 2px;
+    color: white;
+}
+
+.dateCont {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: initial !important;
+}

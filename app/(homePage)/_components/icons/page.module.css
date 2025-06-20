@@ -1,0 +1,10 @@
+.iconCont {
+  position: relative;
+  display:flex;
+  align-items: center
+}
+
+.iconCont span {
+  font-size: 0;
+  border-radius:1000px
+}

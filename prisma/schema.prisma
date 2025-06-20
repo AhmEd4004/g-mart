@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Categories {
+  id                   String @id @default(auto()) @map("_id") @db.ObjectId
+  name                 String
+  section              String
+  imagePath            String
+  createdAt            DateTime @default(now())
+  @@unique([name, section])
+}
+
+model Products {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  description   String?
+  price         Float
+  discount      Float?
+  categories    String[]
+  imagePaths    String[]
+  quantity      Int
+  availability  Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Orders {
+  /// MongoDB’s native ObjectId
+  id                   String   @id @map("_id")
+
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  /// Owner info
+  ownerEmail           String
+  ownerPhone           String
+
+  /// Receiver info
+  differentReceiver    Boolean? @default(false)
+  receiverName         String
+  receiverPhone        String?
+  receiverGovernment   String
+  receiverCity         String
+  receiverAddress      String
+  receiverExtraAddress String?
+  paymentMethod String?
+
+  /// Array of { productId, quantity }
+  products             Json
+
+  process       String?  @default("acceptance")
+}
+
+model Accounts {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  email         String
+  password      String
+} 

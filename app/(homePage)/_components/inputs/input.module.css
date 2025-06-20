@@ -1,0 +1,36 @@
+.inputCont {
+    position: relative;
+}
+
+.inputCont input, .inputCont select {
+    font-size: 14px;
+    color:#AEAEAE;
+    border: none;
+    border-radius: 12px;
+    padding:12px;
+}
+
+.inputCont .leftIconCont, .inputCont .rightIconCont {
+    position: absolute;
+    height: 100%;
+    width: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputCont .leftIconCont {
+    left:8px;
+}
+
+.inputCont .rightIconCont {
+    right:8px;
+}
+
+
+
+/*-------------------Select Input--------------------*/
+
+.inputCont select {
+    background: white;
+}

@@ -1,0 +1,46 @@
+.frame {
+    position: relative;
+    width:80%;
+    height:100dvh;
+    margin: 0 auto;
+    padding:24px 0;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+.tableCont {
+    flex:1;
+    overflow-y: auto;
+}
+
+.addNewLink {
+    flex:1;
+    color:blue;
+    text-align: right;
+    font-weight: 500;
+    padding-top: 8px;
+}
+
+.actionsCont {
+    display: flex;
+    gap:16px;
+    width:100%;
+    direction: rtl;
+}
+
+.imgMainCont {
+    position: relative;
+    height:100%;
+    width:100%;
+    padding:10px;
+}
+
+.imgCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+    width:100%;
+}

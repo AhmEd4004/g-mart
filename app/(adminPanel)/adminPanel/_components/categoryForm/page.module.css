@@ -1,0 +1,17 @@
+.fileInputCont {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.fileInputCont button{position: relative;}
+.fileInputCont input{
+    position: absolute;
+    left:0;
+    z-index: -1;
+}
+
+.imgPreviewCont {
+    width: 200px; height: 200px;
+    position: relative;
+}

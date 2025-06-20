@@ -1,0 +1,67 @@
+.frame {
+    position: relative;
+    width:80%;
+    height:100dvh;
+    margin: 0 auto;
+    padding:24px 0;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+.tableCont {
+    flex:1;
+    overflow-y: auto;
+}
+
+.addNewLink {
+    flex:1;
+    color:blue;
+    text-align: right;
+    font-weight: 500;
+    padding-top: 8px;
+}
+
+.actionsCont {
+    display: flex;
+    gap:8px;
+    direction: rtl;
+    width:100%;
+}
+
+.imgMainCont {
+    position: relative;
+    height:100%;
+    width:100%;
+    padding:4px 0;
+}
+
+.imgCont {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+    width:100%;
+}
+
+.nameCont {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: initial !important;
+}
+
+.categoriesCont {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    gap:2px;
+}
+
+.categoriesCont p{
+    line-height: initial !important;
+}

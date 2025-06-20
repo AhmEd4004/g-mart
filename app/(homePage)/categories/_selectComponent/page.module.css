@@ -1,0 +1,35 @@
+.cont {
+  position: relative;
+  background-color: white;
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 8px;
+  border:0 solid var(--borderClr);
+  box-shadow: var(--Normal_shadow);
+}
+
+.item {
+  position: relative;
+  font-size:14px;
+  padding:12px;
+  display: flex;
+  gap:4px
+}
+
+.arrow {
+  position: absolute;
+  right:12px; top:calc(50% - 5px);
+}
+
+.itemsCont {
+  display:none;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+  position: absolute;
+  top:100%;
+  left:0;
+  border-radius:0 0 8px 8px;
+  outline:1px solid var(--borderClr)
+}

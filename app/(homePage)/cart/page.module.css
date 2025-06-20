@@ -1,0 +1,27 @@
+.productsFrame {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    gap:8px;
+    padding-bottom: 136px;
+}
+
+.checkoutCont {
+    position: fixed;
+    bottom: 65px;
+    left:0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 16px 24px;
+    background: white;
+    border-radius: 4px 4px 0 0;
+    border-top:1px solid var(--borderClr);
+}
+
+.checkoutCont * {flex:1}
+.checkoutCont p {
+    font-size: 16px;
+    font-weight: 500;
+}
