@@ -15,7 +15,7 @@ const poppins = localFont({
 export const metadata = {
   title: "G-mart",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
   },
 };
 
