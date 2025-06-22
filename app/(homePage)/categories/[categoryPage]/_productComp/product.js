@@ -45,7 +45,7 @@ export default function Product({id, title, price, priceBefore, discount, descri
 
     return (
         <Link className={styles.mainCont} href={link}>
-            <img src={imgSrc} alt="Product Image"/>
+            <img src={imgSrc} alt="Product Image" loading="lazy"/>
             <div className={styles.infCont}>
                 <div className={styles.titleCont}>
                     <p className={styles.title}>{title}</p>
