@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {    experimental: {
+const nextConfig = {
+  experimental: {
+    dynamicIO: true,
     serverActions: {
       bodySizeLimit: '6mb',
-    },
-    staleTimes: {
-      dynamic: 0,
-    },
+    }
   },
 };
 
