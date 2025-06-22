@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic'
-
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
 import localFont from 'next/font/local';
