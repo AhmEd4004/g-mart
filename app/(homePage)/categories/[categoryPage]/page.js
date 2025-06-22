@@ -16,7 +16,11 @@ export default async function categories({ params }) {
   })
   if (categoryItem) {
     const allProducts = await prisma.Products.findMany({
-
+      where:{
+        categories: {
+          has: categoryItem.id
+        }
+      }
     })
     return (
       <>
