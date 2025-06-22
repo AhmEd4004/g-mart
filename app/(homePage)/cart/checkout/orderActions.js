@@ -7,7 +7,6 @@ const nameSchema = z.string().min(8).max(60).regex(/^[A-Za-z\s]+$/);
 const phoneSchema = z.string().min(4).max(16).regex(/^\d+$/)
 const emailSchema = z.string().email().max(60)
 const addressSchema = z.string().min(4).max(60);
-const isReceiverSchema = z.boolean()
 
 const getConfirmationNumber = async()=> {
     const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -26,7 +25,6 @@ const getConfirmationNumber = async()=> {
 
 
 export default async function addOrder (C_Data, P_Data) {
-    const isReceiverValid = C_Data.differentReceiver?isReceiverSchema.safeParse(C_Data.differentReceiver).success:true
     const orderPhoneValid = phoneSchema.safeParse(C_Data.orderPhone).success
     const orderEmailValid = emailSchema.safeParse(C_Data.orderEmail).success
     const receiverNameValid = nameSchema.safeParse(C_Data.receiverName).success
@@ -36,7 +34,8 @@ export default async function addOrder (C_Data, P_Data) {
     const governmentValid = C_Data.government.length < 20 && C_Data.government in governsData
     const cityValid = governmentValid? C_Data.city.length < 20 && governsData[C_Data.government].includes(C_Data.city): false
 
-    if (isReceiverValid && orderPhoneValid && orderEmailValid && receiverNameValid && receiverPhoneValid && addressValid && extraAddressValid
+
+    if (orderPhoneValid && orderEmailValid && receiverNameValid && receiverPhoneValid && addressValid && extraAddressValid
         && governmentValid && cityValid) {
         const newOrder = await prisma.Orders.create({
             data: {

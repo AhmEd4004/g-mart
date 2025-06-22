@@ -3,22 +3,20 @@
 import { useRef, useState } from "react";
 import styles from "./page.module.css";
 import Icon from "@/app/(homePage)/_components/icons/icon";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function SelectCategory({available}) {
-    const [list, mainCont] = [useRef(null), useRef(null)]
-    const [arrowDirection, setArrowDirection] = useState('arrowDown')
+    const mainCont = useRef(null)
+    const [isList, setIsList] = useState(false)
     const showList =  ()=> {
-        const opened = list.current.style.display === "block"
-        if (!opened) {
+        if (!isList) {
             mainCont.current.style.borderRadius = "8px 8px 0 0"
             mainCont.current.style.borderWidth = "1px"
-            list.current.style.display = "block"
-            setArrowDirection('arrowUp')
+            setIsList (true)
         } else {
             mainCont.current.style.borderRadius = "8px"
             mainCont.current.style.borderWidth = "0"
-            list.current.style.display = "none"
-            setArrowDirection('arrowDown')
+            setIsList (false)
         }
     }
     
@@ -30,9 +28,15 @@ export default function SelectCategory({available}) {
                 <Icon src="homeDecoration" bold={true} width={18} height={18} color="#318535"/>
                 <p>Select gifts category</p>
                 
-                <div className={styles.arrow}><Icon src={arrowDirection} bold={false} width={10} height={10} color="#318535"/></div>
+                <div className={styles.arrow}><Icon src={isList?'arrowUp':'arrowDown'} bold={false} width={10} height={10} color="#318535"/></div>
             </div>
-            <div className={styles.itemsCont} ref={list}>
+            <AnimatePresence>
+            {isList && 
+            (<motion.div className={styles.itemsCont}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}>
                 {available.men && <a className={styles.item} onClick={showList} href="#menSection">
                     <Icon src="male" bold={true} width={20} height={20} color="#318535"/>
                     <p>Men accessories</p>
@@ -48,7 +52,8 @@ export default function SelectCategory({available}) {
                 {available.others && <a className={styles.item} onClick={showList} href="#othersSection">  
                     <p>Others</p>
                 </a>}
-            </div>
+            </motion.div>)}
+        </AnimatePresence>
         </div>
     );
 }

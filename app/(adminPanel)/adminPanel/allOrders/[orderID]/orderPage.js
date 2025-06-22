@@ -94,7 +94,7 @@ export default function OrderPage ({order, orderProducts}) {
                     <h4><MapPinHouse size={16} /> Reciver extra address</h4>
                     <InputParagraph name={'receiverExtraAddress'}>{order.receiverExtraAddress}</InputParagraph>
                 </div>}
-                {!order.receiverPhone&&<p><span style={{color:'red'}}>Note:</span> The order receiver is different than the sender</p>}
+                {order.differentReceiver&&<p><span style={{color:'red'}}>Note:</span> The order receiver is different than the sender</p>}
             </div>
             <span style={{borderBottom:'1px solid #C7C7C7'}}></span>
             <div className={styles.girdCont}>

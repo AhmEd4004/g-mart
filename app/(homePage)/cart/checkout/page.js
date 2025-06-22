@@ -75,20 +75,36 @@ export function ContactWindow ({continueF}) {
 
     return (
         <form className={styles.mainCont} onSubmit={submissionF}>
-            <div style={isReceiver?{display:'flex', flexDirection:'column', gap: '8px'}:{}}>
-                <p style={{display:'flex', justifyContent:'space-between'}}>Check the box if the gift receiver is not you
+            <div>
+                <p style={{display:'flex', justifyContent:'space-between'}}>Mark, if the gift receiver is not you
                 <input name='differentReceiver' type="checkbox" onClick={()=> {setIsReceiver(!isReceiver)}}/></p>
-                <div className={`${styles.window} ${isReceiver?'':styles.window_hidden}`}>
-                    <h4>Receiver Information</h4>
-                    <Input name={isReceiver?'receiverName':''} placeholder={"Receiver name"} leftIcon={<UserRound size={16} color="#AEAEAE" />} required={isReceiver} minLength={8} maxLength={60} pattern="[A-Za-z\s]+" title="Only letters and spaces are allowed"/>
-                    <Input name={isReceiver?'receiverPhone':''} placeholder={"Receiver Contact Nubmer"} leftIcon={<Phone size={16} color="#AEAEAE" />} required={isReceiver} type="number"/>
-                </div>
             </div>
+             <AnimatePresence>
+                {isReceiver && (
+                    <motion.div className={styles.window}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0}}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}>
+                        <h4>Receiver Information</h4>
+                        <Input name='receiverName' placeholder={"Receiver name"} leftIcon={<UserRound size={16} color="#AEAEAE" />} required={true} minLength={8} maxLength={60} pattern="[A-Za-z\s]+" title="Only letters and spaces are allowed"/>
+                        <Input name='receiverPhone' placeholder={"Receiver Contact Nubmer"} leftIcon={<Phone size={16} color="#AEAEAE" />} required={true} type="number"/>
+                    </motion.div>
+                )}
+            </AnimatePresence>
             <div className={styles.window}>
                 <h4>Contact Information</h4>
-                <div style={{maxHeight:isReceiver?'0':"400px", marginBottom:isReceiver?'-8px':'', transition:'0.3s'}}>
-                    <Input name={!isReceiver?'receiverName':''} placeholder={"Your name"} leftIcon={<UserRound size={16} color="#AEAEAE" />} required minLength={8} maxLength={60} pattern="[A-Za-z\s]+" title="Only letters and spaces are allowed"/>
-                </div>
+                <AnimatePresence>
+                {!isReceiver && (
+                    <motion.div
+                    style={{overflow: 'hidden'}}
+                    animate={{ opacity: 1, height: "auto"}}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}>
+                        <Input name='receiverName' placeholder={"Your name"} leftIcon={<UserRound size={16} color="#AEAEAE" />} required minLength={8} maxLength={60} pattern="[A-Za-z\s]+" title="Only letters and spaces are allowed"/>
+                    </motion.div>
+                )}
+                </AnimatePresence>
                 <Input name='orderEmail' placeholder={"Your Email Address"} leftIcon={<Mail size={16} color="#AEAEAE" />} required minLength={8} maxLength={60} type="email"/>
                 <Input name='orderPhone' placeholder={"Your Contact Nubmer"} leftIcon={<Phone size={16} color="#AEAEAE" />} required type="number"/>
                 <p className={styles.notes}> *Note: an ID will be sent to the above email and your contact number, so you can track your order.</p>
@@ -197,7 +213,7 @@ export function OrderLoading ({confrimationNumber}) {
         className={styles.blackBackground}>
             <AnimatePresence mode="wait">
                 {!confrimationNumber && (
-                    <motion.div
+                    <motion.div style={{display:'flex', flexDirection:'column', alignItems:'center', gap:'8px'}}
                     key="loading"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

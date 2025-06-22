@@ -14,7 +14,7 @@
   font-size:14px;
   padding:12px;
   display: flex;
-  gap:4px
+  gap:8px
 }
 
 .arrow {
@@ -23,13 +23,14 @@
 }
 
 .itemsCont {
-  display:none;
   width: 100%;
+  padding:4px;
   background-color: white;
   z-index: 1;
   position: absolute;
   top:100%;
   left:0;
   border-radius:0 0 8px 8px;
-  outline:1px solid var(--borderClr)
+  outline:1px solid var(--borderClr);
+  overflow: hidden
 }

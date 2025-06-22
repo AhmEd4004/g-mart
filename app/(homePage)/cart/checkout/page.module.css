@@ -15,12 +15,6 @@
     border-radius: 12px;
     box-shadow: var(--Normal_shadow);
     overflow: hidden;
-    transition: 0.3s;
-}
-
-.window_hidden {
-    padding: 0 16px !important;
-    max-height: 0 !important;
 }
 
 .window input, .window select {
