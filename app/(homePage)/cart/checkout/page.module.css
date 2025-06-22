@@ -83,13 +83,13 @@
 
 /*-------------------------------------------*/
 
-.thanksBackground {
+.blackBackground {
     position: fixed;
     top: 0; left:0;
     z-index: 2;
     width: 100dvw;
     height: 100dvh;
-    background: #0003;
+    background: #0005;
     display: flex;
     justify-content: center;
     align-items: center;

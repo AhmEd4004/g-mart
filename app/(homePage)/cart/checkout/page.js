@@ -11,6 +11,8 @@ import addOrder from './orderActions';
 import Image from 'next/image';
 import { MapPinHouse, UserRound, Phone, Mail, BadgeCheck, Copy, CopyCheck } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { FallingLines } from 'react-loader-spinner'
+import { motion, AnimatePresence } from "motion/react";
 
 
 export default function OrderPageComp () {
@@ -120,8 +122,8 @@ export function ContactWindow ({continueF}) {
 export function PaymentWindow ({products}) {
     const [paymentMethod, setPaymentMethod] = React.useState('cash')
     const [orderError, setOrderError] = React.useState(null)
-    const [disabeled, setDisabeled] = React.useState(false)
-    const [orderConfirmation, setConfirmation] = React.useState('')
+    const [loading, setLoading] = React.useState(false)
+    const [orderConfirmation, setConfirmation] = React.useState(null)
 
     const selectCash = ()=> {
         setPaymentMethod('cash')
@@ -132,14 +134,15 @@ export function PaymentWindow ({products}) {
     }
 
     const makeOrder = async e=> {
+        if (loading) return
         e.preventDefault()
-        setDisabeled(true)
+        setLoading(true)
         const productsData = Object.fromEntries(Object.entries(products).map(([key, prod])=>{
             const {quantity, name, price: instantPrice} = prod
             return [key, {name, quantity, instantPrice}]
         }))
         const newOrder = await addOrder(JSON.parse(sessionStorage.getItem('contactInformation')), productsData)
-        setDisabeled(false)
+        setLoading(false)
         if (!newOrder) return setOrderError('There is something wrong, please re-enter contact and payment data!')
         setConfirmation (newOrder)
     }
@@ -163,17 +166,15 @@ export function PaymentWindow ({products}) {
                 <p>No. items: {Object.values(products).reduce((sum, product) => sum + product.quantity, 0)}</p>
                 <p>Total price: {Object.values(products).reduce((sum, product) => sum + Number(product.price)*product.quantity, 0)}</p>
             </div>
-            <button className={`${styles.continueButton} CTAButton`} style={paymentMethod=='bank'?{background:'grey'}:{}} disabled={disabeled || paymentMethod=='bank'}>Place your order</button>
+            <button className={`${styles.continueButton} CTAButton`} style={paymentMethod=='bank'?{background:'grey'}:{}} disabled={loading || paymentMethod=='bank'}>Place your order</button>
             {orderError && <UserError error={orderError} errorSetter={setOrderError}/>}
         </form>
-        {orderConfirmation && <OrderThanks confrimationNumber={orderConfirmation}/>}
+        {(loading || orderConfirmation) && <OrderLoading confrimationNumber={orderConfirmation}/>}
         </>
     )
 }
 
-
-
-export function OrderThanks ({confrimationNumber}) {
+export function OrderLoading ({confrimationNumber}) {
     const router = useRouter()
     const [copied, setCopied] = React.useState(false)
     const copyFunction = async ()=> {
@@ -187,25 +188,60 @@ export function OrderThanks ({confrimationNumber}) {
     }
 
     return (
-        <div className={styles.thanksBackground}>
-            <div className={styles.thanksCont}>
-                <div style={{display:'flex', flexDirection:'column', gap:'8px', alignItems:'center'}}>
-                    <Image src={'/thanksIllust.svg'} width={162} height={132} alt={'Thanks illustration'}/>
-                    <div style={{display:'flex', alignItems:'center', gap:'8px'}}>
-                        <p style={{fontWeight:'500'}}>Thanks for shopping</p>
-                        <BadgeCheck size={20} color="#45BA4B" />
-                    </div>
-                    <p style={{color:'#B0B0B0', fontSize:'16px'}}>Order tracking Number</p>
-                    <div style={{display:'flex', gap:'24px'}}>
-                        <p style={{color:'var(--primaryClr_200)'}}>{confrimationNumber}</p>
-                        <div onClick={copyFunction}>
-                            {!copied&&<Copy size={20} color="#828282" />}
-                            {copied&&<CopyCheck size={20} color="#828282" />}
+        <motion.div
+        key="loading"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className={styles.blackBackground}>
+            <AnimatePresence mode="wait">
+                {!confrimationNumber && (
+                    <motion.div
+                    key="loading"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    >
+                    <FallingLines
+                        color="#4fa94d"
+                        width="160"
+                        visible={true}
+                        ariaLabel="falling-circles-loading"
+                    />
+                    <p style={{ color: "white" }}>Your order is under processing</p>
+                    </motion.div>
+                )}
+                {confrimationNumber && (
+                <motion.div
+                key="thanks"
+                className={styles.thanksCont}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                >
+                <div className={styles.thanksCont}>
+                    <div style={{display:'flex', flexDirection:'column', gap:'8px', alignItems:'center'}}>
+                        <Image src={'/thanksIllust.svg'} width={162} height={132} alt={'Thanks illustration'}/>
+                        <div style={{display:'flex', alignItems:'center', gap:'8px'}}>
+                            <p style={{fontWeight:'500'}}>Thanks for shopping</p>
+                            <BadgeCheck size={20} color="#45BA4B" />
+                        </div>
+                        <p style={{color:'#B0B0B0', fontSize:'16px'}}>Order tracking Number</p>
+                        <div style={{display:'flex', gap:'24px'}}>
+                            <p style={{color:'var(--primaryClr_200)'}}>{confrimationNumber}</p>
+                            <div onClick={copyFunction}>
+                                {!copied&&<Copy size={20} color="#828282" />}
+                                {copied&&<CopyCheck size={20} color="#828282" />}
+                            </div>
                         </div>
                     </div>
+                    <button className="greenButton" style={{boxShadow:"var(--Normal_shadow)", padding:"8px 24px"}} onClick={()=> router.push('/categories')}>Explore more gifts</button>
                 </div>
-                <button className="greenButton" style={{boxShadow:"var(--Normal_shadow)", padding:"8px 24px"}} onClick={()=> router.push('/categories')}>Explore more gifts</button>
-            </div>
-        </div>
+                </motion.div>)}
+            </AnimatePresence>
+        </motion.div>
     )
 }
