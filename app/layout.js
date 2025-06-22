@@ -12,6 +12,13 @@ const poppins = localFont({
   variable: '--font-poppins', // optional; CSS variable
 });
 
+export const metadata = {
+  title: "G-mart",
+  icons: {
+    icon: "/favicon.png",
+  },
+};
+
 
 
 export default function RootLayout({ children }) {

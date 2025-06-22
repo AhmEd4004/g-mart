@@ -18,6 +18,12 @@
     justify-content: center;
     gap: 4px;
     height:64px;
+    transition: 0.6s;
+    border-radius: 8px;
+  }
+
+  .links:active {
+    background: var(--primaryClr_300);
   }
 
   .navigationBar .links img{
