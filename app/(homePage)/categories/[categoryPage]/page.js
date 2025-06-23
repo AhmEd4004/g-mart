@@ -1,12 +1,26 @@
 import Product from "@/app/(homePage)/categories/[categoryPage]/_productComp/product";
 import styles from "./page.module.css";
 import { prisma } from "@/libs/prisma";
+import { Suspense } from "react";
 
 export default async function categories({ params }) {
   const {categoryPage} = await params
   const paramsArr = categoryPage.split("-")
   const [section, categoryName] = [paramsArr[0].charAt(0).toUpperCase() + paramsArr[0].slice(1), paramsArr[1].charAt(0).toUpperCase() + paramsArr[1].slice(1)]
-  const categoryItem = await prisma.Categories.findUnique({
+  return (
+    <>
+      <h3>{`${categoryName} - ${section}`}</h3>
+      <Suspense fallback={<p>Loading products...</p>}>
+        <SuspendedComponent section={section} categoryName={categoryName}/>
+      </Suspense>
+    </>
+  )
+}
+
+
+async function SuspendedComponent ({section, categoryName}) {
+  
+ const categoryItem = await prisma.Categories.findUnique({
     where:{
       name_section: {
         name: categoryName,
@@ -23,8 +37,6 @@ export default async function categories({ params }) {
       }
     })
     return (
-      <>
-      <h3>{`${categoryName} - ${section}`}</h3>
       <div className={styles.productsFrame}>
         {allProducts.map ((v)=> {
           return <Product
@@ -40,7 +52,6 @@ export default async function categories({ params }) {
           />
         })}
       </div>
-      </>
     );
   }
   
