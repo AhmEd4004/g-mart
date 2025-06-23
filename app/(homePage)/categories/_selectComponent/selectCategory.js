@@ -23,9 +23,9 @@ export default function SelectCategory({available}) {
     return (
         <div className={styles.cont} ref={mainCont}>
             <div className={styles.item} onClick={showList}>
-                <Icon src="male" bold={true} width={18} height={18} color="#318535"/>
-                <Icon src="female" bold={true} width={18} height={18} color="#318535"/>
-                <Icon src="homeDecoration" bold={true} width={18} height={18} color="#318535"/>
+                <Icon src="male" bold={true} width={16} height={16} color="#318535"/>
+                <Icon src="female" bold={true} width={16} height={16} color="#318535"/>
+                <Icon src="homeDecoration" bold={true} width={16} height={16} color="#318535"/>
                 <p>Select gifts category</p>
                 
                 <div className={styles.arrow}><Icon src={isList?'arrowUp':'arrowDown'} bold={false} width={10} height={10} color="#318535"/></div>
@@ -38,15 +38,15 @@ export default function SelectCategory({available}) {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}>
                 {available.men && <a className={styles.item} onClick={showList} href="#menSection">
-                    <Icon src="male" bold={true} width={20} height={20} color="#318535"/>
+                    <Icon src="male" bold={true} width={16} height={16} color="#318535"/>
                     <p>Men accessories</p>
                 </a>}
                 {available.women && <a className={styles.item} onClick={showList} href="#womenSection">
-                    <Icon src="female" bold={true} width={20} height={20} color="#318535"/>  
+                    <Icon src="female" bold={true} width={16} height={16} color="#318535"/>  
                     <p>Women accessories</p>
                 </a>}
                 {available.home && <a className={styles.item} onClick={showList} href="#homedecSection">
-                    <Icon src="homeDecoration" bold={true} width={20} height={20} color="#318535"/>
+                    <Icon src="homeDecoration" bold={true} width={16} height={16} color="#318535"/>
                     <p>Home decoration</p>
                 </a>}
                 {available.others && <a className={styles.item} onClick={showList} href="#othersSection">  
