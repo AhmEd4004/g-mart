@@ -1,9 +1,18 @@
 import styles from "./page.module.css";
 import { prisma } from "@/libs/prisma";
 import Product from "@/app/(homePage)/categories/[categoryPage]/_productComp/product";
+import { Suspense } from "react";
 
 export default async function page({searchParams}) {
   const params = await searchParams
+  return (
+    <Suspense fallback={<p>Loading search results...</p>}>
+      <SearchResults params={params}/>
+    </Suspense>
+  )
+}
+
+async function SearchResults ({params}) {
 
   const name = Array.isArray(params.name) ? params.name[0] : (params.name || '')
   const section = Array.isArray(params.section) ? params.section[0] : (params.section || null)

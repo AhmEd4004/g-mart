@@ -89,7 +89,7 @@ export function ProductImages ({id, name, imagePaths}) {
         <div className={styles.imgsSlider} onScroll={e=>setSelectedDot(Math.floor(e.target.scrollLeft/e.target.clientWidth))}>
         {imagePaths.map(v=>{
             return (<div className={styles.imgCont} key={v}>
-                <img src={v} alt="Product Image" />
+                <img src={v} alt="Product Image" loading="lazy"/>
             </div>)
         })}
         </div>
