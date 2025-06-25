@@ -4,6 +4,7 @@ import QuantityComp from "../../_components/quantityComp/quantityComp";
 
 export default function Product({id, title, price, discount, quantity, imgSrc, quantityUpdateF}) {
     const link = `/categories/products/${id}`
+    console.log(link)
 
     return (
         <Link className={styles.mainCont} href={link}>
