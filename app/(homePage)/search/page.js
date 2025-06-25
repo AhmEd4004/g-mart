@@ -54,9 +54,8 @@ async function SearchResults ({params}) {
       <div className={styles.productsFrame}>
         {allProducts.map ((v)=> {
           return <Product
-            Product
             key={v.id}
-            ID = {v.id}
+            id = {v.id}
             title={v.name}
             price={v.price}
             priceBefore={Math.round(v.price/(1-v.discount/100))}

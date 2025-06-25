@@ -9,6 +9,11 @@
   gap:16px;
   padding: 8px;
   box-shadow: var(--Normal_shadow);
+  transition: 0.3s;
+}
+
+.mainCont:active {
+  box-shadow: none;
 }
 
 .mainCont img {

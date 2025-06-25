@@ -7,7 +7,7 @@ import * as React from "react";
 import QuantityComp from "@/app/(homePage)/_components/quantityComp/quantityComp";
 
 export default function Product({id, title, price, priceBefore, discount, descri, imgSrc}) {
-    const link = `products/${id}`
+    const link = `/categories/products/${id}`
 
     const [inCart, setInCart] = React.useState(false)
 

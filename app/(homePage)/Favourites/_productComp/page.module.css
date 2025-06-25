@@ -10,9 +10,12 @@
     justify-content: space-around;
     padding: 0 12px;
     box-shadow: var(--Normal_shadow);
+    transition: 0.3s;
 }
 
-
+.productCont:active {
+    box-shadow: none;
+}
 
 .productCont img {
     width:58%; height: 58%;

@@ -12,7 +12,7 @@ export default function SearchInput() {
     const [filterWindow, setFilterWindow] = React.useState(false)
     const [filters, setFilters] = React.useState({})
     const router = useRouter()
-    const searchButton = React.useRef(null)
+    const removeSearchButton = React.useRef(null)
     const searchInput = React.useRef(null)
 
     React.useEffect(() => {
@@ -36,18 +36,17 @@ export default function SearchInput() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const showSearchButton = ()=> {
+    const showRemoveButton = ()=> {
         if (searchInput.current.value == '') {
-            searchButton.current.style.opacity = "0"
-            return searchButton.current.style.visibility = "hidden"
+            removeSearchButton.current.style.opacity = "0"
+            return removeSearchButton.current.style.visibility = "hidden"
         }
-        searchButton.current.style.visibility = "visible"
-        searchButton.current.style.opacity = "1"
+        removeSearchButton.current.style.visibility = "visible"
+        removeSearchButton.current.style.opacity = "1"
     }
 
     const searchF = ()=> {
-        searchButton.current.style.opacity = "0"
-        searchButton.current.style.visibility = "hidden"
+        if (searchInput.current.value == '') return
         let link = "/search?name="+searchInput.current.value.replace(' ', '-')
 
         // using filters
@@ -92,9 +91,9 @@ export default function SearchInput() {
         <div className={`${styles.headerCont} ${scrolling?styles.scrollingEffect:''}`}>
             <div className={styles.searchCont} style={(filterWindow?{width:'0'}:{})}>
                 <div className={styles.inputCont}>
-                    <input ref={searchInput} placeholder="What are you looking for???" onChange={showSearchButton} onClick={showSearchButton}/>
+                    <input ref={searchInput} placeholder="What are you looking for???" onChange={showRemoveButton} onKeyDown={e => e.key === "Enter" && searchF()}/>
                     <div className={styles.primaryIcon}><Icon src="search" bold={false} width={16} height={16} color="#AEAEAE"/></div>
-                    <button ref={searchButton} className={styles.searchButton+" greenButton"} onClick={searchF}>Go</button>
+                    <button ref={removeSearchButton} className={styles.removeSearchButton+" outLinedButton"} onClick={()=>{searchInput.current.value = ''; showRemoveButton()}}>Clr</button>
                 </div>
 
                 <div onClick={openFilterF}>

@@ -11,6 +11,11 @@
   border-radius: 8px;
   text-decoration:none;
   box-shadow: var(--Windows_shadow);
+  transition: 0.3s;
+}
+
+.category:active {
+  box-shadow: none
 }
 
 .imgCont {
