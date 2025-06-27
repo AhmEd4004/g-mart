@@ -33,7 +33,8 @@ async function SuspendedComponent ({section, categoryName}) {
       where:{
         categories: {
           has: categoryItem.id
-        }
+        },
+        availability: true
       }
     })
     return (
