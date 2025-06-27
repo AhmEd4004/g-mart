@@ -39,7 +39,7 @@ body {
 
 .frame {
   position: relative;
-  background: var(--lightMintClr) url("/backIllusts.svg") no-repeat center top/160% fixed;
+  background: var(--lightMintClr) url("/backIllusts.png") no-repeat center top/200% fixed;
   width:100%;
   min-height:100vh;
   padding:78px 16px 80px;
