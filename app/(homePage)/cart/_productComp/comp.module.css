@@ -35,6 +35,7 @@
   font-size: 14px;
   color:#4E4E4E;
   line-height: 18px;
+  word-break: break-word;
   display: -webkit-box;        /* Establish a flex container */
   -webkit-box-orient: vertical; /* Set the box orientation to vertical */
   -webkit-line-clamp: 2;        /* Limit the text to 2 lines */
