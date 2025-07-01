@@ -3,7 +3,6 @@
 import Product from './_productComp/product'
 import styles from './page.module.css'
 import * as React from 'react'
-import { Eraser } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 export default function page() {
@@ -38,7 +37,7 @@ export default function page() {
     <>
         <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center'}}>  
             <h3>My cart</h3>
-            {Object.keys(products).length > 0 && <div style={{display:'flex', gap:'8px', alignItems:'center', color:'#828282'}} onClick={cleanCart}><Eraser size={18} color="#828282" /> Empty cart</div>}
+            {Object.keys(products).length > 0 && <p onClick={cleanCart}>Empty cart</p>}
         </div>
         <div className={styles.productsFrame}>
             {Object.keys(products).map(v=>{
@@ -53,6 +52,12 @@ export default function page() {
                 quantityUpdateF={quantityUpdateF}
                 />
             })}
+            { Object.keys(products).length == 0 &&
+            <div className={styles.emptyCart}>
+                <img src='empty_cart.svg'/>
+                Oops! Your cart is empty.
+            </div>}
+            { Object.keys(products).length > 0 && <div style={{height:'136px'}}></div>}
         </div>
         {totalPrice > 0 && <div className={styles.checkoutCont}>
             <p>Total Cost: {totalPrice.toLocaleString('en-US')} EGP</p>

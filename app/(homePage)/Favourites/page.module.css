@@ -1,5 +1,19 @@
 .productsCont {
     display: flex;
     flex-wrap: wrap;
-    gap:16px
+    gap:16px;
+}
+
+.emptyFav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    flex:1
+}
+
+.emptyFav img{
+    width: 60%;
+    opacity: 0.6;
 }

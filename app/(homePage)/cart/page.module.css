@@ -3,7 +3,7 @@
     display:flex;
     flex-direction: column;
     gap:8px;
-    padding-bottom: 136px;
+    flex:1
 }
 
 .checkoutCont {
@@ -24,4 +24,19 @@
 .checkoutCont p {
     font-size: 16px;
     font-weight: 500;
+}
+
+.emptyCart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    flex:1
+}
+
+.emptyCart img{
+    width: 60%;
+    opacity: 0.6;
+    margin-left: -56px;
 }

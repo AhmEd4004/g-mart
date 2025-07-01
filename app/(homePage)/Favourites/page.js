@@ -1,6 +1,5 @@
 "use client"
 
-import { Eraser } from "lucide-react";
 import FavouriteProduct from "./_productComp/comp";
 import styles from "./page.module.css";
 import * as React from 'react'
@@ -31,13 +30,18 @@ export default function categories() {
     <>
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center'}}>  
         <h3>Favourite gifts</h3>
-          {Object.keys(products).length > 0 && <div style={{display:'flex', gap:'8px', alignItems:'center', color:'#828282'}} onClick={cleanFavourites}><Eraser size={18} color="#828282" /> Empty favourites</div>}
+          {Object.keys(products).length > 0 && <p onClick={cleanFavourites}>Empty favourites</p>}
         </div>
       <div className={styles.productsCont}>
         {Object.keys(products).map(v=> {
           return <FavouriteProduct id={v} product={products[v]} key={v} removeProduct={removeProduct}/>
         })}
       </div>
+      { Object.keys(products).length == 0 && 
+      <div className={styles.emptyFav}>
+        <img src='heart.png'/>
+        Oops! Favourites is empty.
+      </div>}
     </>
   );
 }
