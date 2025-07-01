@@ -10,10 +10,11 @@
     justify-content: center;
     flex-direction: column;
     gap: 16px;
-    flex:1
+    flex:1;
+    padding-bottom: 40px;
 }
 
 .emptyFav img{
     width: 60%;
-    opacity: 0.6;
+    opacity: 0.4;
 }
