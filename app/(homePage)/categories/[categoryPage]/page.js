@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import Product from "@/app/(homePage)/categories/[categoryPage]/_productComp/product";
 import styles from "./page.module.css";
 import { prisma } from "@/libs/prisma";
@@ -56,7 +57,5 @@ async function SuspendedComponent ({section, categoryName}) {
     );
   }
   
-  return (
-    <div>This category might not exist or still under development.</div>
-  );
+  return redirect('/notfound')
 }
