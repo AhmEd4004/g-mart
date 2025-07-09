@@ -7,6 +7,7 @@ import { Suspense } from "react";
 export default async function categories({ params }) {
   const {categoryPage} = await params
   const paramsArr = categoryPage.split("-")
+  if (paramsArr.length != 2) return redirect('/notfound')
   const [section, categoryName] = [paramsArr[0].charAt(0).toUpperCase() + paramsArr[0].slice(1), paramsArr[1].charAt(0).toUpperCase() + paramsArr[1].slice(1)]
   return (
     <>

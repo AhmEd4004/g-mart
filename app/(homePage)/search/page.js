@@ -64,8 +64,12 @@ async function SearchResults ({params}) {
             imgSrc={v.imagePaths[0]}
           />
         })}
-        {allProducts.length == 0 && <p>There are no results matching your search!</p>}
-      </div>
+        {allProducts.length == 0 &&
+        <div className={styles.noResults}>
+          <img src='search.svg'/>
+          No results for your search!
+        </div>}
+        </div>
       </>
   )
 }
